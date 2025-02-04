@@ -1,0 +1,209 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.app {
+  text-align: center;
+  padding: 10px;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
+  }
+}
+
+.header {
+  font-size: 2.5rem; /* Adjust size as needed */
+  background: linear-gradient(135deg, #ff6f91, #ffcc70); /* Gradient colors */
+  background-size: 300% 300%; /* Increase size for animation effect */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  -webkit-text-fill-color: transparent;
+  margin: 20px 0;
+  animation: gradient-animation 5s ease infinite;
+}
+
+.header-char {
+  display: inline-block;
+  animation: fadeIn 0.5s forwards;
+}
+
+input[type="text"] {
+  padding: 10px;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns on large screens */
+  gap: 10px; /* Space between items */
+}
+
+@media (max-width: 1200px) {
+  .movie-list {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .movie-list {
+    grid-template-columns: 1fr; /* 1 column on extra small screens */
+  }
+}
+
+.movie-item {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Title, Image, and Vote Average */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
+  background-color: #fff; /* White background for cards */
+}
+
+.movie-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Rounded corners for images */
+}
+
+.movie-item h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.2rem; /* Adjust title size */
+}
+
+.movie-item p {
+  margin: 5px 0; /* Add some spacing */
+}
+
+.movie-item img:hover {
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.favourite-item {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  background-color: #f0f4ff; /* Light background for the favorite section */
+  padding: 10px; /* Add padding */
+  border-radius: 8px; /* Rounded corners */
+  margin-bottom: 20px;
+  /* max-width: 100%; */
+}
+
+.favourite-item > div {
+  max-width: 150px;
+  margin-right: 10px;
+  flex: 0 0 auto;
+}
+
+.favourite-item::-webkit-scrollbar {
+  height: 8px; /* Height of the scrollbar */
+}
+
+.favourite-item::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+.favourite-item::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color on hover */
+}
+
+.favorite-icon {
+  font-size: 20px; /* Adjust size as needed */
+  transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.favorite-icon.filled {
+  color: red; /* Change color when filled */
+  transform: scale(1.2); /* Scale effect when filled */
+}
+
+.movie-detail {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  /* height: 70dvh; */
+  margin: 0 auto;
+  padding: 10px 10px 40px;
+}
+
+.movie-detail img {
+  width: 50%;
+  max-width: 400px; /* Adjust as needed */
+  /* height: auto; */
+}
+
+.movie-detail {
+  /* display: grid; */
+  grid-template-rows: auto 1fr auto; /* Title, Image, and Vote Average */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
+  background-color: #f0f4ff; /* White background for detail */
+}
+
+.movie-detail h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.5rem; /* Adjust title size */
+}
+
+.movie-detail p {
+  margin: 5px 0; /* Add some spacing */
+}
+
+@media (max-width: 600px) {
+  .movie-item {
+    width: 100%;
+    max-width: 90%; /* Make it bigger on small screens */
+  }
+}
