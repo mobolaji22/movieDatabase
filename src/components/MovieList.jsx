@@ -1,11 +1,13 @@
 // src/components/MovieList.jsx
 import { useContext, useRef } from "react";
 import { MovieContext } from "./MovieContext";
+import { useNavigate } from "react-router-dom";
 
 function MovieList() {
   const { movies, handleMovieClick, favorite, handleFavoriteClick, imgUrl } =
     useContext(MovieContext);
   const audioRef = useRef(null); // Reference for audio
+  const navigate = useNavigate();
 
   const playSound = () => {
     if (audioRef.current) {
@@ -14,9 +16,13 @@ function MovieList() {
     }
   };
 
+  const handleViewAll = () => {
+    navigate("/favorites"); // Navigate to the favorites page
+  };
+
   return (
     <>
-      <audio ref={audioRef} src="click-sound.mp3" /> {/* Sound effect */}
+      <audio ref={audioRef} src="click-sound.wav" /> {/* Sound effect */}
       <h1>Favourites</h1>
       <div className="favourite-item">
         {favorite.map((movie) => (
@@ -47,6 +53,11 @@ function MovieList() {
             </span>
           </div>
         ))}
+        {favorite.length > 10 && ( // Show button only if there are favorites
+          <button onClick={handleViewAll} className="view-all-button">
+            View All
+          </button>
+        )}
       </div>
       <h1>Movies</h1>
       <div className="movie-list">

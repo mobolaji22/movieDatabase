@@ -1,0 +1,86 @@
+.favorites-page {
+  padding: 20px;
+}
+
+/* .favourite-page-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+} */
+
+.favourite-page-item {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns on large screens */
+  gap: 10px; /* Space between items */
+}
+
+@media (max-width: 1200px) {
+  .favourite-page-item {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .favourite-page-item {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .favourite-page-item {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .favourite-page-item {
+    grid-template-columns: 1fr; /* 1 column on extra small screens */
+  }
+}
+
+.favorite-movie-item {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Title, Image, and Vote Average */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
+  background-color: #fff; /* White background for cards */
+}
+
+.favorite-movie-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Rounded corners for images */
+}
+
+.favorite-movie-item h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.2rem; /* Adjust title size */
+}
+
+.favorite-movie-item p {
+  margin: 5px 0; /* Add some spacing */
+}
+
+.favorite-movie-item img:hover {
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.view-all-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.3;
+}
+
+.view-all-button:hover {
+  opacity: 1;
+}

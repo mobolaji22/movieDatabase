@@ -45,20 +45,25 @@ const MovieProvider = ({ children }) => {
     }
   }, [favorite]);
 
-  const handleMovieClick = (movie) => {
+  const handleMovieClick = (movie, navigate, state = {}) => {
     setMovieDetail(movie);
+    navigate("/movie-detail", { state }); // Pass state
   };
 
-  const handleBackToList = () => {
+  const handleBackToList = (navigate) => {
     setMovieDetail(null);
+    navigate(-1); // Go back to the previous page
   };
 
   const handleFavoriteClick = (movie) => {
-    if (!favorite.some((fav) => fav.id === movie.id)) {
-      setFavorite([...favorite, movie]);
-    } else {
-      setFavorite(favorite.filter((fav) => fav.id !== movie.id));
-    }
+    // Logic for adding/removing favorites
+    setFavorite((prevFavorites) => {
+      if (prevFavorites.some((fav) => fav.id === movie.id)) {
+        return prevFavorites.filter((fav) => fav.id !== movie.id); // Remove from favorites
+      } else {
+        return [...prevFavorites, movie]; // Add to favorites
+      }
+    });
   };
 
   return (

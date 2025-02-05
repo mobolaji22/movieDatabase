@@ -1,27 +1,29 @@
-// src/App.jsx
+import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MovieContent from "./components/MovieContent";
+import Favorites from "./components/Favorites";
+import MovieDetail from "./components/MovieDetail";
+import { MovieProvider } from "./components/MovieContext";
 import "./App.css";
-import MovieSearch from "./components/MovieSearch";
-
-// Function to wrap each character in a span
-const animateText = (text) => {
-  return text.split("").map((char, index) => (
-    <span
-      key={index}
-      className="header-char"
-      style={{ animationDelay: `${index * 0.1}s` }}
-    >
-      {char}
-    </span>
-  ));
-};
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="app">
-      {/* <h1 className="header">{animateText("Movie Database")}</h1> */}
-      <h1 className="header">Movie Database</h1>
-      <MovieSearch />
-    </div>
+    <MovieProvider>
+      <Router>
+        <header>
+          <h1 className="header">Movie Database</h1>
+        </header>
+        <Routes>
+          <Route path="/" element={<MovieContent />} />
+          <Route path="/movie-detail" element={<MovieDetail />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </Router>
+    </MovieProvider>
   );
 }
 

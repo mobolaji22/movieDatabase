@@ -34,17 +34,6 @@ body {
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* End at original position */
-  }
-}
-
 .header {
   font-size: 2.5rem; /* Adjust size as needed */
   background: linear-gradient(135deg, #ff6f91, #ffcc70); /* Gradient colors */
